@@ -1,4 +1,4 @@
-import UIKit
+
 
 
 //: ## 1. Create custom types to represent an Airport Departures display
@@ -16,7 +16,41 @@ import UIKit
 //: e. Use a `String?` for the Terminal, since it may not be set yet (i.e.: waiting to arrive on time)
 //:
 //: f. Use a class to represent a `DepartureBoard` with a list of departure flights, and the current airport
+enum flightStatus{
+    case Enroute
+    case Scheduled
+    case Canceled
+    case Delayed
+    case Landed_onTime
+    case Landed_Delayed
+}
 
+    
+    
+
+
+struct Date{}
+
+struct Airport{
+    var airportName:String
+    var cityName:String
+  
+}
+
+struct Flight{
+    var airline:String //in real life this would be an enum of valid airlines
+    var departureTime: Date?
+    var arrivalTime: String
+    var terminal: String?
+   var  departureAirport: Airport
+    //var arrivalAirport: Airport
+    
+    class DepartureBoard{
+        var destination: String? //destination city
+        var airline:String
+        var flight:String
+        
+    }
 
 
 //: ## 2. Create 3 flights and add them to a departure board
