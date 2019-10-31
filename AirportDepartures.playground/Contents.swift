@@ -79,10 +79,33 @@ func printDepartures(departureBoard:DepartureBoard){
 
 print(printDepartures(departureBoard:JFKDepBoard))
 
+func printDepartures2(departureBoard: DepartureBoard) {
+    for time in departureBoard.departure {
+        var departureString: String = ""
+        if let departureTime = time.departureTime {
+            departureString = "\(departureTime)"
+        }
+        var terminalString: String = ""
+        if let terminal = time.terminal {
+            terminalString = "\(terminal)"
+        
+        print("Destination: \(departureBoard.airport.airportName) Departure Time: \(departureString) at Terminal: \(terminalString)")
+    }
+ }
+}
+
+print(printDepartures2(departureBoard:JFKDepBoard))
+
 
     
 
-
+func calculateAirfare(checkedBags:Double, distance:Double, travelers:Double) -> Double {
+    var price = (Double(checkedBags * 25 + Double(distance) * 0.1) * Double(travelers))
+    return price
+}
+print(calculateAirfare(checkedBags: 4, distance: 2000, travelers: 2))
+print(calculateAirfare(checkedBags: 1, distance: 255.25, travelers: 1))
+print(calculateAirfare(checkedBags: 2, distance: 2000, travelers: 3))
             
         
         
