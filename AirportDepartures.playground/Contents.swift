@@ -18,14 +18,14 @@ print(rightNow)
 //: e. Use a `String?` for the Terminal, since it may not be set yet (i.e.: waiting to arrive on time)
 //:
 //: f. Use a class to represent a `DepartureBoard` with a list of departure flights, and the current airport
-enum flightStatus{
+enum flightStatus : String {
     
-    case Enroute
-    case Scheduled
-    case Canceled
-    case Delayed
-    case Landed_onTime
-    case Landed_Delayed
+    case Enroute = "Enroute"
+    case Scheduled = "Scheduled"
+    case Cancelled = "Cancelled"
+    case Delayed = "Delayed"
+    case Landed_onTime = "Landed on time"
+    case Landed_Delayed = "Landed Delayed."
 }
 
     
@@ -36,7 +36,7 @@ enum flightStatus{
 
 struct Airport{
     var airportName:String
-    var cityName:String
+  
   
 }
 
@@ -46,7 +46,7 @@ struct Flight{
    var flight:String
    var departureTime: Date?
    var terminal:String?
-   var status: flightStatus
+    var status: flightStatus }
     
     class DepartureBoard{
         var departure: [Flight]
@@ -55,14 +55,30 @@ struct Flight{
         init(departure:[Flight], airport: Airport){
             self.departure = departure
             self.airport = airport
-        }
+        }}
 
         
-        let flight1 = Flight(destination:"LA", airline:"United Flights", flight:"HQ101", depatureTime:Date(), terminal:nil, status:flightStatus.Canceled )
+        let flight1 = Flight(destination:"LA", airline:"United Flights", flight:"HQ101", departureTime:Date(), terminal:nil, status:flightStatus.Cancelled )
 
-        let flight2 = Flight(destination:"Denver", airline: "Rocky Mountain Flier", flight:"M024", departureTime:Date(), terminal:8, status:flightStatus.Landed_Delayed)
+        let flight2 = Flight(destination:"Denver", airline: "Rocky Mountain Flier", flight:"M024", departureTime:Date(), terminal:"8", status:flightStatus.Landed_Delayed)
 
         let flight3 = Flight(destination:"Boulder", airline:"Boudler Discount Glider", flight:"F631", departureTime:Date(), terminal:"8", status:flightStatus.Scheduled)
+        var JFKair = Airport(airportName:"JFK International Airport")
+        var JFKDepBoard = DepartureBoard(departure:[flight1], airport:JFKair)
+        
+        JFKDepBoard.departure.append(flight2)
+        
+        JFKDepBoard.departure.append(flight3)
+
+        
+func printDepartures(departureBoard:DepartureBoard){
+    for flight in departureBoard.departure{
+        print(flight.status.rawValue)
+    }
+}
+
+print(printDepartures(departureBoard:JFKDepBoard))
+
 
     
 
@@ -151,6 +167,7 @@ struct Flight{
 //: e. Make sure to cast the numbers to the appropriate types so you calculate the correct airfare
 //:
 //: f. Stretch: Use a [`NumberFormatter`](https://developer.apple.com/documentation/foundation/numberformatter) with the `currencyStyle` to format the amount in US dollars.
+
 
 
 
