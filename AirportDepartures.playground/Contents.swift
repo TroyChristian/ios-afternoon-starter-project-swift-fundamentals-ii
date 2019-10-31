@@ -1,5 +1,7 @@
+import Foundation
+let rightNow = Date()
 
-
+print(rightNow)
 
 //: ## 1. Create custom types to represent an Airport Departures display
 //: ![Airport Departures](matthew-smith-5934-unsplash.jpg)
@@ -17,6 +19,7 @@
 //:
 //: f. Use a class to represent a `DepartureBoard` with a list of departure flights, and the current airport
 enum flightStatus{
+    
     case Enroute
     case Scheduled
     case Canceled
@@ -29,7 +32,7 @@ enum flightStatus{
     
 
 
-struct Date{}
+
 
 struct Airport{
     var airportName:String
@@ -38,19 +41,37 @@ struct Airport{
 }
 
 struct Flight{
-    var airline:String //in real life this would be an enum of valid airlines
-    var departureTime: Date?
-    var arrivalTime: String
-    var terminal: String?
-   var  departureAirport: Airport
-    //var arrivalAirport: Airport
+   var destination: String //destination city
+   var airline:String
+   var flight:String
+   var departureTime: Date?
+   var terminal:String?
+   var status: flightStatus
     
     class DepartureBoard{
-        var destination: String? //destination city
-        var airline:String
-        var flight:String
+        var departure: [Flight]
+        var airport:Airport
         
-    }
+        init(departure:[Flight], airport: Airport){
+            self.departure = departure
+            self.airport = airport
+        }
+
+        
+        let flight1 = Flight(destination:"LA", airline:"United Flights", flight:"HQ101", depatureTime:Date(), terminal:nil, status:flightStatus.Canceled )
+
+        let flight2 = Flight(destination:"Denver", airline: "Rocky Mountain Flier", flight:"M024", departureTime:Date(), terminal:8, status:flightStatus.Landed_Delayed)
+
+        let flight3 = Flight(destination:"Boulder", airline:"Boudler Discount Glider", flight:"F631", departureTime:Date(), terminal:"8", status:flightStatus.Scheduled)
+
+    
+
+
+            
+        
+        
+        
+    
 
 
 //: ## 2. Create 3 flights and add them to a departure board
